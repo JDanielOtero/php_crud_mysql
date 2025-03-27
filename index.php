@@ -1,18 +1,24 @@
-<?php include("db.php"); ?>
+<?php include("includes/header.php"); ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHP MYSQL CRUD</title>
-    <!-- Bootstrao 5.3 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-</head>
-<body>
-    <h1>Hello Word</h1>
-    <!-- SCRIPTS -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-</body>
-</html>
+<main class="container p-4">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card card-body">
+            <form action="save_task.php" method="POST">
+                <div class="form-group my-3">
+                    <input type="text" name="title" class="form-control" placeholder="Task Title" autofocus>
+                </div>
+                <div class="form-group my-3">
+                    <textarea name="description" rows="2" class="form-control" placeholder="Task Description"></textarea>
+                </div>
+                <input type="submit" name="save_task" class="btn btn-success btn-block" value="Save Task">
+            </form>
+            </div>
+        </div>
+        <div class="col-md-8">
+        </div>
+    </div>
+
+</main>
+
+<?php include("includes/footer.php"); ?>
