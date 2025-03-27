@@ -7,8 +7,4 @@ $conn = mysqli_connect(
     'php_mysql_crud'
 );
 
-if(isset($conn)){
-    echo 'Db is conected';
-}
-
 ?>
