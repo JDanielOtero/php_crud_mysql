@@ -1,3 +1,1 @@
-<?php
-echo "Hello World";
-?>
+<?php include("db.php"); ?>
