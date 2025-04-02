@@ -5,10 +5,19 @@ $description= '';
 
 if  (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $query = "SELECT * FROM task WHERE id=$id";
-    $result = mysqli_query($conn, $query);
-    if (mysqli_num_rows($result) == 1) {
-        $row = mysqli_fetch_array($result);
+    $query = "SELECT * FROM task WHERE id = :id";
+    // $query = "SELECT * FROM task WHERE id=$id";
+    // $result = mysqli_query($conn, $query);
+    // if (mysqli_num_rows($result) == 1) {
+    // $row = mysqli_fetch_array($result);
+
+    $stmt = $conn->prepare($query);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->execute();
+    
+    // Comprobamos si la tarea existe
+    if ($stmt->rowCount() == 1) {
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
         $title = $row['title'];
         $description = $row['description'];
     }
@@ -19,8 +28,14 @@ if (isset($_POST['update'])) {
     $title= $_POST['title'];
     $description = $_POST['description'];
 
-    $query = "UPDATE task set title = '$title', description = '$description' WHERE id=$id";
-    mysqli_query($conn, $query);
+    // $query = "UPDATE task set title = '$title', description = '$description' WHERE id=$id";
+    // mysqli_query($conn, $query);
+    $query = "UPDATE task SET title = :title, description = :description WHERE id = :id";
+    $stmt = $conn->prepare($query);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+    $stmt->bindParam(':description', $description, PDO::PARAM_STR);
+    $stmt->execute();
     $_SESSION['message'] = 'Task Updated Successfully';
     $_SESSION['message_type'] = 'warning';
     header('Location: index.php');
