@@ -15,7 +15,7 @@
   <nav class="navbar navbar-dark bg-dark">
     <div class="container">
       <a class="navbar-brand" href="index.php">
-        <i class="fas fa-database me-2"></i> <i class="far fa-camera me-2"></i>PHP MySQL CRUD
+        <i class="far fa-camera me-2"></i>PHP MySQL CRUD
       </a>
     </div>
   </nav>
